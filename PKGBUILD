@@ -17,4 +17,4 @@ package() {
   make PREFIX=/usr "DESTDIR=$pkgdir" install
 }
 
-sha512sums=('8fc7ebff9921a661049cf96773325e2c724afdd706b7f9092fce7a1632fa188e80c835768fc5704f8ff81141d2c4be1d1f90d0d4acce627dcb2dfc551b4186b2')
+sha512sums=('e9cdc79ee62543fe4fe15aacd8b8477c2c8b749823fab9bed85af2553c4d221dcf4aea8ebc457555e855b8d4ea4a778042e6d83603a391a5feac7955cf9dc7de')
