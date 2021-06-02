@@ -8,7 +8,7 @@ arch=('any')
 url='https://theash.xyz'
 license=('WTFPL')
 depends=('archlinux-keyring')
-install="chaotic-keyring.install"
+install="ash-keyring.install"
 source=("keyring-$pkgver-$pkgrel.tar.gz::https://github.com/the-ashh/ash-keyring/archive/refs/heads/master.zip")
 
 package() {
@@ -17,4 +17,4 @@ package() {
   make PREFIX=/usr "DESTDIR=$pkgdir" install
 }
 
-sha512sums=('223fb30de4b0cfae8fae7a324015586b26343cac5b4ccf6dacd960566702efe5afa10898d75a50372193c1a7deac4522435baba66c44e2dc6bc7e930c0bbe368')
+sha512sums=('8fc7ebff9921a661049cf96773325e2c724afdd706b7f9092fce7a1632fa188e80c835768fc5704f8ff81141d2c4be1d1f90d0d4acce627dcb2dfc551b4186b2')
