@@ -1,6 +1,6 @@
 # Thanks for archlinuxcn's package that I've used as template!
 
-pkgname='chaotic-keyring'
+pkgname='ash-keyring'
 pkgver='20210602'
 pkgrel=1
 pkgdesc="ash's PGP keyring"
@@ -12,7 +12,7 @@ install="ash-keyring.install"
 source=("keyring-$pkgver-$pkgrel.tar.gz::https://github.com/the-ashh/ash-keyring/archive/refs/heads/master.zip")
 
 package() {
-  cd "$srcdir/keyring-$pkgver-$pkgrel"
+  cd "$srcdir/ash-keyring-master"
 
   make PREFIX=/usr "DESTDIR=$pkgdir" install
 }

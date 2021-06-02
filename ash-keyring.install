@@ -46,6 +46,8 @@ post_upgrade() {
         fi
     if (usr/bin/grep -A3 "[^#]*\[ash-pkgs\]" /etc/pacman.conf | grep "TrustAll" >/dev/null 2>&1); then
         _error 'Please remove the SigLevel= line of [ash-pkgs] from "/etc/pacman.conf" to use the default setting'
+        _error '请删除 /etc/pacman.conf 中 [ash-pkgs] 下的 SigLevel= 行，以使用默认设置'
+    fi  
 }
 
 post_install() {
