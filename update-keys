@@ -24,14 +24,14 @@ Key-Type: RSA
 Key-Length: 1024
 Key-Usage: sign
 Name-Real: Arch Linux CN Keyring Keychain Master Key
-Name-Email: archlinuxcn-keyring@localhost
+Name-Email: ash-keyring@localhost
 Expire-Date: 0
 %no-protection
 %commit
 %echo Done
 EOF
 
-rm -rf master packager packager-revoked archlinuxcn-trusted archlinuxcn-revoked
+rm -rf master packager packager-revoked ash-trusted ash-revoked
 mkdir master packager packager-revoked
 
 while read -ra data; do
@@ -42,9 +42,9 @@ while read -ra data; do
 		${GPG} --command-fd 0 --edit-key ${keyid}
 	${GPG} --yes --lsign-key ${keyid} &>/dev/null
 	${GPG} --armor --no-emit-version --export ${keyid} >> master/${username}.asc
-	echo "${keyid}:4:" >> archlinuxcn-trusted
+	echo "${keyid}:4:" >> ash-trusted
 done < master-keyids
-${GPG} --import-ownertrust < archlinuxcn-trusted 2>/dev/null
+${GPG} --import-ownertrust < ash-trusted 2>/dev/null
 
 while read -ra data; do
 	keyid="${data[0]}"
@@ -70,16 +70,16 @@ while read -ra data; do
 		${GPG} --command-fd 0 --edit-key ${keyid}
 	if ! ${GPG} --list-keys --with-colons ${keyid} 2>/dev/null | grep -q '^pub:f:'; then
 		${GPG} --armor --no-emit-version --export ${keyid} >> packager-revoked/${username}.asc
-		echo "${keyid}" >> archlinuxcn-revoked
+		echo "${keyid}" >> ash-revoked
 	else
 		echo "key is still fully trusted: ${keyid} ${username}"
 	fi
 done < packager-revoked-keyids
 
-cat master/*.asc packager/*.asc packager-revoked/*.asc > archlinuxcn.gpg
+cat master/*.asc packager/*.asc packager-revoked/*.asc > ash.gpg
 
-if [[ ! -f archlinuxcn-revoked ]] ; then
-    touch archlinuxcn-revoked
+if [[ ! -f ash-revoked ]] ; then
+    touch ash-revoked
 fi
 
 popd >/dev/null
