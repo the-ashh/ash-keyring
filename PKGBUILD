@@ -2,7 +2,7 @@
 
 pkgname='ash-keyring'
 pkgver='20210602'
-pkgrel=1
+pkgrel=2
 pkgdesc="ash's PGP keyring"
 arch=('any')
 url='https://theash.xyz'
